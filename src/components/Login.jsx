@@ -36,6 +36,7 @@ const Login = () => {
         <div className="col-md-6 col-12">
           <div className="d-flex justify-content-center align-items-center h-100">
             <div className="w-75" style={{ maxWidth: "400px" }}>
+              {/* Изображение */}
               <div className="text-center mb-4">
                 <img
                   src={SelloLogo}
@@ -47,7 +48,7 @@ const Login = () => {
               </div>
 
               <form onSubmit={handleSubmit}>
-                {/* Поле Email с крестиком */}
+                {/* Email */}
                 <div className="mb-3 position-relative">
                   <input
                     type="email"
@@ -75,7 +76,7 @@ const Login = () => {
                     </button>
                   )}
                 </div>
-
+                {/* Пароль */}
                 <div className="mb-4 position-relative">
                   <input
                     type={showPassword ? "text" : "password"}
@@ -119,7 +120,7 @@ const Login = () => {
                     )}
                   </div>
                 </div>
-
+                {/* Кнопка входа */}
                 <button
                   type="submit"
                   className="btn btn-primary btn-lg w-100 py-2 fw-semibold mb-3 btn-login"
@@ -127,7 +128,7 @@ const Login = () => {
                   ВОЙТИ
                 </button>
               </form>
-
+              {/* Ссылка на регистрацию */}
               <div className="text-center">
                 <span className="register-text">
                   <a href="/register" className="register-link">
