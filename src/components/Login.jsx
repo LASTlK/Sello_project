@@ -1,15 +1,22 @@
 import { useState } from "react"
 import SelloLogo from "../assets/images/sello-logo.svg"
 import LoginBg from "../assets/images/login-bg.jpg"
+import XIcon from "../assets/icon/x-icon.svg"
+import EyeOpenIcon from "../assets/icon/eye-open-icon.svg"
+import EyeCloseIcon from "../assets/icon/eye-close-icon.svg"
 
 const Login = () => {
-  const [email, setEmail] = useState("")
-  const [password, setPassword] = useState("")
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
 
   const handleSubmit = (e) => {
-    e.preventDefault()
-    console.log("Email:", email, "Password:", password)
-  }
+    e.preventDefault();
+    console.log("Email:", email, "Password:", password);
+  };
+
+  const clearEmail = () => setEmail("");
+  const clearPassword = () => setPassword("");
 
   return (
     <div className="container-fluid vh-100 p-0">
@@ -40,7 +47,8 @@ const Login = () => {
               </div>
 
               <form onSubmit={handleSubmit}>
-                <div className="mb-3">
+                {/* Поле Email с крестиком */}
+                <div className="mb-3 position-relative">
                   <input
                     type="email"
                     className="form-control form-control-lg"
@@ -50,11 +58,27 @@ const Login = () => {
                     placeholder="Email*"
                     required
                   />
+                  {email && (
+                    <button
+                      type="button"
+                      className="btn btn-link position-absolute end-0 top-50 translate-middle-y me-2 p-0 text-decoration-none"
+                      onClick={clearEmail}
+                      style={{ width: "24px", height: "24px", padding: "0" }}
+                    >
+                      <img
+                        src={XIcon}
+                        alt="Clear"
+                        width="20"
+                        height="20"
+                        style={{ filter: "grayscale(80%) opacity(0.7)" }}
+                      />
+                    </button>
+                  )}
                 </div>
 
-                <div className="mb-4">
+                <div className="mb-4 position-relative">
                   <input
-                    type="password"
+                    type={showPassword ? "text" : "password"}
                     className="form-control form-control-lg"
                     id="password"
                     value={password}
@@ -62,6 +86,38 @@ const Login = () => {
                     placeholder="Пароль*"
                     required
                   />
+                  <div className="position-absolute end-0 top-50 translate-middle-y me-2 d-flex gap-2">
+                    <button
+                      type="button"
+                      className="btn btn-link p-0 text-decoration-none"
+                      onClick={() => setShowPassword(!showPassword)}
+                      style={{ width: "24px", height: "24px", padding: "0" }}
+                    >
+                      <img
+                        src={showPassword ? EyeOpenIcon : EyeCloseIcon}
+                        alt={showPassword ? "Hide" : "Show"}
+                        width="20"
+                        height="20"
+                        style={{ filter: "grayscale(80%) opacity(0.7)" }}
+                      />
+                    </button>
+                    {password && (
+                      <button
+                        type="button"
+                        className="btn btn-link p-0 text-decoration-none"
+                        onClick={clearPassword}
+                        style={{ width: "24px", height: "24px", padding: "0" }}
+                      >
+                        <img
+                          src={XIcon}
+                          alt="Clear"
+                          width="20"
+                          height="20"
+                          style={{ filter: "grayscale(80%) opacity(0.7)" }}
+                        />
+                      </button>
+                    )}
+                  </div>
                 </div>
 
                 <button
