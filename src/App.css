@@ -42,3 +42,30 @@ body {
   font-weight: 600;
   transition: all 0.3s ease;
 }
+
+.home-container {
+  min-height: 100vh;
+}
+
+.home-title {
+  color: #604113 !important;
+  font-size: 40px !important;
+  font-weight: 600;
+  margin-bottom: 1.5rem !important;
+}
+
+.home-subtitle {
+  color: #886128 !important;
+  font-size: 24px !important;
+  line-height: 1.1;
+  letter-spacing: 0.6px;
+}
+
+.navbar-custom {
+  background-color: #FFE082 !important;
+}
+
+.home-image {
+  max-width: 100%;
+  height: auto;
+}

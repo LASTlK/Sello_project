@@ -1,4 +1,5 @@
 import { useState } from "react"
+import { useNavigate } from "react-router-dom"
 import SelloLogo from "../assets/images/sello-logo.svg"
 import LoginBg from "../assets/images/login-bg.jpg"
 import XIcon from "../assets/icon/x-icon.svg"
@@ -6,6 +7,7 @@ import EyeOpenIcon from "../assets/icon/eye-open-icon.svg"
 import EyeCloseIcon from "../assets/icon/eye-close-icon.svg"
 
 const Register = () => {
+  const navigate = useNavigate()
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -16,17 +18,73 @@ const Register = () => {
   })
   const [showPassword, setShowPassword] = useState(false)
   const [showConfirmPassword, setShowConfirmPassword] = useState(false)
+  const [passwordError, setPasswordError] = useState("")
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log("Form data:", formData)
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    
+    // Проверка совпадения паролей
+    if (formData.password !== formData.confirmPassword) {
+      setPasswordError("Пароли не совпадают")
+      return
+    }
+    
+    setPasswordError("")
+
+    try {
+      // Отправка данных в бэк
+      const response = await fetch('http://localhost:8000/api/auth/register/', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          first_name: formData.firstName,
+          last_name: formData.lastName,
+          username: formData.login,
+          email: formData.email,
+          password: formData.password,
+          confirm_password: formData.confirmPassword,
+        }),
+        credentials: 'include',
+      })
+
+      const data = await response.json()
+
+      if (response.ok) {
+        console.log('Регистрация успешна:', data)
+        // Перенаправление на страницу логина
+        navigate("/login")
+      } else {
+        console.error('Ошибка регистрации:', data)
+        // Обработка ошибок с бэкенда
+        if (data.username) {
+          alert(`Ошибка логина: ${data.username[0]}`)
+        } else if (data.email) {
+          alert(`Ошибка email: ${data.email[0]}`)
+        } else if (data.password) {
+          alert(`Ошибка пароля: ${data.password[0]}`)
+        } else {
+          alert('Ошибка регистрации: ' + JSON.stringify(data))
+        }
+      }
+    } catch (error) {
+      console.error('Ошибка сети:', error)
+      alert('Ошибка соединения с сервером')
+    }
   }
 
   const handleChange = (e) => {
+    const { name, value } = e.target
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value
+      [name]: value
     })
+    
+    // Очищаем ошибку пароля при изменении полей
+    if ((name === 'password' || name === 'confirmPassword') && passwordError) {
+      setPasswordError("")
+    }
   }
 
   const clearField = (fieldName) => {
@@ -34,6 +92,11 @@ const Register = () => {
       ...formData,
       [fieldName]: ""
     })
+    
+    // Очищаем ошибку пароля если очищаем поля паролей
+    if ((fieldName === 'password' || fieldName === 'confirmPassword') && passwordError) {
+      setPasswordError("")
+    }
   }
 
   return (
@@ -229,10 +292,10 @@ const Register = () => {
                 </div>
 
                 {/* Подтверждение пароля */}
-                <div className="mb-4 position-relative">
+                <div className="mb-3 position-relative">
                   <input
                     type={showConfirmPassword ? "text" : "password"}
-                    className="form-control form-control-lg"
+                    className={`form-control form-control-lg ${passwordError ? 'is-invalid' : ''}`}
                     name="confirmPassword"
                     value={formData.confirmPassword}
                     onChange={handleChange}
@@ -271,6 +334,13 @@ const Register = () => {
                       </button>
                     )}
                   </div>
+                  
+                  {/* Сообщение об ошибке */}
+                  {passwordError && (
+                    <div className="invalid-feedback d-block">
+                      {passwordError}
+                    </div>
+                  )}
                 </div>
 
                 {/* Кнопка регистрации */}
@@ -296,7 +366,7 @@ const Register = () => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Register;
+export default Register
