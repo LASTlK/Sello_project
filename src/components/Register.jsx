@@ -23,7 +23,7 @@ const Register = () => {
   const handleSubmit = async (e) => {
     e.preventDefault()
     
-    // Проверка совпадения паролей
+    {/* Проверка совпадения паролей */}
     if (formData.password !== formData.confirmPassword) {
       setPasswordError("Пароли не совпадают")
       return
@@ -32,7 +32,7 @@ const Register = () => {
     setPasswordError("")
 
     try {
-      // Отправка данных в бэк
+      {/* Отправка данных в бэк */}
       const response = await fetch('http://localhost:8000/api/auth/register/', {
         method: 'POST',
         headers: {
@@ -53,11 +53,11 @@ const Register = () => {
 
       if (response.ok) {
         console.log('Регистрация успешна:', data)
-        // Перенаправление на страницу логина
+        {/* Перенаправление на страницу логина */}
         navigate("/login")
       } else {
         console.error('Ошибка регистрации:', data)
-        // Обработка ошибок с бэкенда
+        {/* Обработка ошибок с бэкенда */}
         if (data.username) {
           alert(`Ошибка логина: ${data.username[0]}`)
         } else if (data.email) {
@@ -81,7 +81,7 @@ const Register = () => {
       [name]: value
     })
     
-    // Очищаем ошибку пароля при изменении полей
+    {/* Очищаем ошибку пароля при изменении полей */}
     if ((name === 'password' || name === 'confirmPassword') && passwordError) {
       setPasswordError("")
     }
@@ -93,7 +93,7 @@ const Register = () => {
       [fieldName]: ""
     })
     
-    // Очищаем ошибку пароля если очищаем поля паролей
+    {/* Очищаем ошибку пароля если очищаем поля паролей */}
     if ((fieldName === 'password' || fieldName === 'confirmPassword') && passwordError) {
       setPasswordError("")
     }
