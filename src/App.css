@@ -760,3 +760,360 @@ body {
     margin-bottom: 1rem;
   }
 }
+
+/* Стили для страницы Бренды */
+.brands-page-container {
+  min-height: 100vh;
+  background-color: #FFFAF4;
+}
+
+.brands-content-main {
+  flex: 1;
+  margin-left: 80px;
+  transition: margin-left 0.3s ease;
+  background-color: #FFFAF4;
+  min-height: calc(100vh - 76px);
+}
+
+.sidebar-custom.expanded ~ .brands-content-main {
+  margin-left: 280px;
+}
+
+/* Заголовок страницы */
+.brands-header {
+  padding-top: 1rem;
+}
+
+.brands-title-icon {
+  width: 29px;
+  height: 28px;
+  object-fit: contain;
+}
+
+.brands-main-title {
+  color: #604113;
+  font-size: 2.5rem;
+  font-weight: 400;
+  margin: 0;
+}
+
+/* Секция фильтрации */
+.brands-filter-section {
+  background-color: #FFF4E5 !important;
+  border: 1px solid #F9E5C8;
+  border-radius: 12px;
+}
+
+.brands-filter-actions {
+  padding: 0 0.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.brands-add-btn {
+  background-color: #FFECB3 !important;
+  color: #FFA000 !important;
+  font-weight: 600;
+  border-radius: 12px;
+  padding: 8px 16px;
+  width: 200px;
+  transition: all 0.3s ease;
+  align-self: flex-start;
+  margin-left: 0;
+}
+
+.brands-add-btn:hover {
+  background-color: #FFE082 !important;
+  transform: translateY(-1px);
+}
+
+.brands-search-btn {
+  background-color: #FF6F00 !important;
+  border-color: #FF6F00 !important;
+  color: white !important;
+  font-weight: 600;
+  border-radius: 8px;
+  padding: 8px 24px;
+  width: 130px;
+  transition: all 0.3s ease;
+}
+
+.brands-search-btn:hover {
+  background-color: #FF6F00 !important;
+  border-color: #FF6F00 !important;
+  transform: translateY(-1px);
+}
+
+/* Таблица брендов */
+.brands-table-container {
+  border-radius: 12px;
+}
+
+.brands-table {
+  margin: 0;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+.brands-table thead th {
+  background-color: #F9E5C8 !important;
+  color: #886128 !important;
+  font-weight: 600;
+  border: none;
+  padding: 15px 12px;
+  border-bottom: 2px solid #e9d9bf;
+  position: relative;
+  text-align: center;
+}
+
+.brands-table thead th:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 15%;
+  height: 70%;
+  width: 1px;
+  background-color: #FFF4E5;
+}
+
+/* Вертикальные линии между колонками в теле таблицы */
+.brands-table tbody td:not(:last-child) {
+  border-right: 1px solid #e9d9bf;
+}
+
+.brands-table tbody td {
+  border: none;
+  padding: 12px;
+  vertical-align: middle;
+  border-bottom: 1px solid #e9d9bf;
+}
+
+.brands-table tbody td {
+  border: none;
+  padding: 12px;
+  vertical-align: middle;
+  border-bottom: 1px solid #f8f1e6;
+}
+
+.brands-table-cell {
+  color: #886128;
+  font-weight: 500;
+  text-align: center !important;
+}
+
+.brands-logo {
+  width: 24px;
+  height: 24px;
+  border-radius: 4px;
+  object-fit: cover;
+}
+
+.brands-actions {
+  white-space: nowrap;
+}
+
+.brands-action-icon {
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
+}
+
+.brands-edit-btn {
+  background-color: #FFF8E1 !important;
+  border: 1px solid #FFA000 !important;
+  color: #FFA000 !important;
+  font-weight: 500;
+  border-radius: 12px;
+  padding: 4px 8px;
+  font-size: 0.875rem;
+  transition: all 0.3s ease;
+}
+
+.brands-edit-btn:hover {
+  background-color: #FFF8E1 !important;
+  transform: translateY(-1px);
+}
+
+.brands-delete-btn {
+  background-color: #FFF8E1 !important;
+  border: 1px solid #FFA000 !important;
+  color: #FFA000 !important;
+  border-radius: 12px;
+  padding: 4px 8px;
+  font-size: 0.875rem;
+  transition: all 0.3s ease;
+}
+
+.brands-delete-btn:hover {
+  background-color: #FFF8E1 !important;
+  transform: translateY(-1px);
+}
+
+.brands-empty {
+  color: #886128;
+  font-style: italic;
+}
+
+/* Форма добавления/редактирования */
+.brands-form-title {
+  color: #886128;
+  font-weight: 600;
+  text-align: center;
+}
+
+.brands-form {
+  background: #FFFAF4;
+  padding: 2rem;
+  border-radius: 12px;
+  border: 1px solid #F9E5C8;
+  box-shadow: 0 2px 10px rgba(136, 97, 40, 0.1);
+}
+
+.brands-file-btn {
+  border-radius: 8px;
+  font-weight: 500;
+}
+
+.brands-file-input {
+  display: none;
+}
+
+.brands-file-name {
+  font-size: 0.9rem;
+}
+
+.brands-submit-btn {
+  border-radius: 20px;
+  font-weight: 600;
+  padding: 10px 30px;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .brands-content-main {
+    margin-left: 0 !important;
+    padding: 1rem;
+  }
+  
+  .brands-main-title {
+    font-size: 2rem;
+  }
+  
+  .brands-title-icon {
+    width: 24px;
+    height: 23px;
+  }
+  
+  .brands-filter-actions {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .brands-add-btn,
+  .brands-search-btn {
+    width: 100%;
+  }
+  
+  .brands-table {
+    font-size: 0.875rem;
+  }
+  
+  .brands-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .brands-edit-btn,
+  .brands-delete-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 576px) {
+  .brands-main-title {
+    font-size: 1.75rem;
+  }
+  
+  .brands-form {
+    padding: 1rem;
+  }
+  
+  .brands-table thead th {
+    padding: 10px 8px;
+    font-size: 0.8rem;
+  }
+  
+  .brands-table tbody td {
+    padding: 8px 6px;
+    font-size: 0.8rem;
+  }
+}
+/* Чётные и нечётные строки в таблице брендов */
+.brands-table tbody tr:nth-child(odd) {
+  background-color: #FFF8E1 !important;
+}
+
+.brands-table tbody tr:nth-child(even) {
+  background-color: #f6930a !important;
+}
+
+/* Отступ справа для всей страницы Бренды */
+.brands-content-main .container-fluid {
+  padding-right: 80px !important;
+}
+
+/* Сброс стилей Bootstrap для таблицы брендов */
+.brands-table {
+  width: 100%;
+  margin-bottom: 1rem;
+  color: #212529;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+.brands-table thead th {
+  background-color: #F9E5C8 !important;
+  color: #886128 !important;
+  font-weight: 600;
+  border: none;
+  padding: 15px 12px;
+  border-bottom: 2px solid #e9d9bf;
+  position: relative;
+  text-align: center;
+}
+
+.brands-table thead th:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 15%;
+  height: 70%;
+  width: 1px;
+  background-color: #FFFAF4;
+}
+
+.brands-table tbody tr {
+  border-bottom: 1px solid #e9d9bf;
+}
+
+.brands-table tbody tr:nth-child(odd) {
+  background-color: #FFFAF4 !important;
+}
+
+.brands-table tbody tr:nth-child(even) {
+  background-color: #FFF4E5 !important;
+}
+
+.brands-table tbody td {
+  border: none;
+  padding: 12px;
+  vertical-align: middle;
+  border-right: 1px solid #e9d9bf;
+}
+
+.brands-table tbody td:last-child {
+  border-right: none;
+}

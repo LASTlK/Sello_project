@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 
-// Импортируем иконки
+{/* Импортируем иконки */}
 import HomeIcon from "../assets/icon/home-icon.svg";
 import NewsIcon from "../assets/icon/news-icon.svg";
 import BrandsIcon from "../assets/icon/brands-icon.svg";
