@@ -1117,3 +1117,148 @@ body {
 .brands-table tbody td:last-child {
   border-right: none;
 }
+
+/* === СТИЛИ ДЛЯ ФОРМЫ ДОБАВЛЕНИЯ/РЕДАКТИРОВАНИЯ БРЕНДОВ === */
+
+/* Цвет фона формы */
+.brands-form {
+  background-color: #FFF4E5 !important;
+}
+
+/* Рамка инпутов */
+.form-control,
+.form-select {
+  border-color: #AA8144 !important;
+  border-width: 2px !important;
+  border-radius: 8px !important;
+  color: #C79E63 !important;
+}
+
+/* Фокус-состояние */
+.form-control:focus,
+.form-select:focus {
+  border-color: #AA8144 !important;
+  box-shadow: none !important;
+}
+
+/* Заголовок "БРЕНДЫ" */
+.brands-main-title {
+  font-size: 1.75rem !important;
+  color: #886128 !important;
+  font-weight: 600 !important;
+  margin: 0 !important;
+  text-align: center !important;
+}
+
+/* Подзаголовок "Добавить новый бренд" */
+.brands-subtitle {
+  color: #604113;
+  font-size: 1.25rem;
+  font-weight: 500;
+  margin-left: 20px !important;
+}
+
+/* Кнопка "Прикрепить изображение" */
+.brands-file-btn {
+  background-color: #FFECB3 !important;
+  color: #FFA000 !important;
+  border-radius: 8px !important;
+  font-weight: 500 !important;
+  padding: 8px 12px !important;
+  transition: all 0.3s ease;
+}
+
+.brands-file-btn:hover {
+  background-color: #FFE082 !important;
+  color: #FF6F00 !important;
+  transform: translateY(-1px);
+}
+
+/* Иконка в кнопке "Прикрепить изображение" */
+.brands-file-icon {
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+}
+
+/* Кнопка "Готово" */
+.brands-submit-btn {
+  background-color: #FF6F00 !important;
+  border-color: #FF6F00 !important;
+  color: white !important;
+  font-weight: 600;
+  border-radius: 20px;
+  padding: 10px 30px;
+  transition: all 0.3s ease;
+}
+
+.brands-submit-btn:hover {
+  background-color: #E65100 !important;
+  border-color: #E65100 !important;
+  transform: translateY(-1px);
+}
+
+/* Маржины и отступы для формы */
+.brands-form {
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(136, 97, 40, 0.1);
+}
+
+/* Адаптивность для мобильных устройств */
+@media (max-width: 768px) {
+  .w-300 {
+    width: 100% !important;
+  }
+
+  .brands-main-title {
+    font-size: 1.5rem !important;
+  }
+
+  .brands-subtitle {
+    font-size: 1.1rem !important;
+  }
+
+  .row.gx-5 {
+    --bs-gutter-x: 1.5rem !important; /* 24px на мобильных */
+  }
+}
+
+/* Для выравнивания label по верхнему краю */
+.form-label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  color: #886128;
+}
+
+/* Для адаптивности и отступов */
+@media (max-width: 576px) {
+  .brands-form-header .brands-main-title {
+    font-size: 1.5rem !important;
+  }
+
+  .brands-subtitle {
+    font-size: 1.1rem !important;
+  }
+
+  .mt-4 {
+    margin-top: 1.5rem !important;
+  }
+
+  .mt-5 {
+    margin-top: 2rem !important;
+  }
+}
+
+.form-control::placeholder {
+  color: #C79E63 !important;
+}
+
+.form-select::placeholder {
+  color: #C79E63 !important;
+}
+
+.form-control {
+  margin-top: 0px !important;
+}

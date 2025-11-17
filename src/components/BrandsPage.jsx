@@ -2,11 +2,11 @@ import { useState } from "react";
 import Sidebar from "./Sidebar";
 import Header from "./Header";
 
-// Импортируем иконки
 import BrandsIcon from "../assets/icon/brands-icon.svg";
 import EditIcon from "../assets/icon/edit-icon.svg";
 import DeleteIcon from "../assets/icon/delete-icon.svg";
 import PlusIcon from "../assets/icon/plus-icon.svg";
+import PlusImageIcon from "../assets/icon/plus-image-icon.svg";
 
 const BrandsPage = () => {
   const [isAddingBrand, setIsAddingBrand] = useState(false);
@@ -75,8 +75,7 @@ const BrandsPage = () => {
     });
     setIsAddingBrand(true);
   };
-
-  // Если в режиме добавления/редактирования — показываем форму
+{/* Если в режиме добавления/редактирования — показываем форму */}
   if (isAddingBrand) {
     return (
       <div className="brands-page-container">
@@ -85,12 +84,23 @@ const BrandsPage = () => {
           <Sidebar />
           <main className="brands-content-main">
             <div className="container-fluid p-4">
-              <h2 className="brands-form-title mb-4">
+              <div className="d-flex justify-content-center align-items-center mb-4">
+                <img
+                  src={BrandsIcon}
+                  alt="Бренды"
+                  className="brands-title-icon me-2"
+                />
+                <h2 className="brands-main-title text-center">БРЕНДЫ</h2>
+              </div>
+
+              <h3 className="brands-subtitle mb-4 ms-4">
                 {editingBrand ? "Редактировать бренд" : "Добавить новый бренд"}
-              </h2>
+              </h3>
+
+              {/* Форма */}
               <form onSubmit={handleSubmit} className="brands-form">
-                <div className="row mb-3">
-                  <div className="col-md-4">
+                <div className="row align-items-start d-flex justify-content-between">
+                  <div className="col-md-3">
                     <label className="form-label">Название бренда:</label>
                     <input
                       type="text"
@@ -102,7 +112,7 @@ const BrandsPage = () => {
                       required
                     />
                   </div>
-                  <div className="col-md-4">
+                  <div className="col-md-3">
                     <label className="form-label">Страна:</label>
                     <select
                       className="form-select"
@@ -117,7 +127,7 @@ const BrandsPage = () => {
                       <option value="Германия">Германия</option>
                     </select>
                   </div>
-                  <div className="col-md-4">
+                  <div className="col-md-3">
                     <label className="form-label">Категория бренда:</label>
                     <select
                       className="form-select"
@@ -134,17 +144,22 @@ const BrandsPage = () => {
                   </div>
                 </div>
 
-                <div className="mb-3">
+                <div className="mb-3 mt-4">
                   <label className="form-label">Добавить логотип:</label>
                   <div className="d-flex align-items-center">
                     <button
                       type="button"
-                      className="btn btn-outline-warning me-2 brands-file-btn"
+                      className="btn brands-file-btn d-flex align-items-center"
                       onClick={() =>
                         document.getElementById("logoInput").click()
                       }
                     >
-                      🖼️ Прикрепить изображение
+                      <img
+                        src={PlusImageIcon}
+                        alt="Прикрепить"
+                        className="brands-file-icon me-2"
+                      />
+                      Прикрепить изображение
                     </button>
                     <input
                       id="logoInput"
@@ -161,7 +176,7 @@ const BrandsPage = () => {
                   </div>
                 </div>
 
-                <div className="mb-3">
+                <div className="mb-5 mt-5">
                   <label className="form-label">Описание бренда:</label>
                   <textarea
                     className="form-control"
@@ -189,7 +204,7 @@ const BrandsPage = () => {
     );
   }
 
-  // Иначе — показываем список брендов
+  {/* Иначе — показываем список брендов */}
   return (
     <div className="brands-page-container">
       <Header />
@@ -209,23 +224,14 @@ const BrandsPage = () => {
 
             {/* Форма фильтрации */}
             <div className="brands-filter-section p-3 rounded mb-4">
-              <div className="row g-3">
-                <div className="col-md-4">
-                  <label
-                    className="form-label"
-                    style={{
-                      marginLeft: "31px",
-                    }}
-                  >
-                    Название бренда:
-                  </label>
+              <div className="row g-3 d-flex align-items-center justify-content-around">
+                <div className="col-md-3">
+                  <label className="form-label">Название бренда:</label>
                   <select
                     className="form-select"
                     style={{
-                      width: "350px",
                       borderRadius: "8px",
                       borderColor: "#AA8144",
-                      marginLeft: "29px",
                     }}
                   >
                     <option>Выберите</option>
@@ -234,12 +240,11 @@ const BrandsPage = () => {
                     ))}
                   </select>
                 </div>
-                <div className="col-md-4">
+                <div className="col-md-3">
                   <label className="form-label">Страна:</label>
                   <select
                     className="form-select"
                     style={{
-                      width: "350px",
                       borderRadius: "8px",
                       borderColor: "#AA8144",
                     }}
@@ -250,12 +255,11 @@ const BrandsPage = () => {
                     <option>Германия</option>
                   </select>
                 </div>
-                <div className="col-md-4">
+                <div className="col-md-3">
                   <label className="form-label">Категория товаров:</label>
                   <select
                     className="form-select"
                     style={{
-                      width: "350px",
                       borderRadius: "8px",
                       borderColor: "#AA8144",
                     }}
@@ -267,13 +271,13 @@ const BrandsPage = () => {
                   </select>
                 </div>
               </div>
-              <div className="brands-filter-actions mt-3">
+              <div className="brands-filter-actions mt-3 d-flex align-items-center justify-content-between">
                 <button
-                  className="btn brands-add-btn d-flex align-items-center"
+                  className="btn brands-add-btn d-flex align-items-center justify-content-center"
                   onClick={() => setIsAddingBrand(true)}
                   style={{
-                    marginLeft: "20px",
-                    borderRadius: "20px"
+                    borderRadius: "20px",
+                    marginLeft: "45px"
                   }}
                 >
                   <img
@@ -287,10 +291,7 @@ const BrandsPage = () => {
                   />
                   Добавить бренд
                 </button>
-                <button
-                  className="btn btn-primary brands-search-btn"
-                  style={{ marginRight: "65px" }}
-                >
+                <button className="btn btn-primary brands-search-btn" style={{marginRight: "45px"}}>
                   Поиск
                 </button>
               </div>
