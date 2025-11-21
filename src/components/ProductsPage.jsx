@@ -1,5 +1,3 @@
-// src/components/ProductsPage.jsx
-
 import { useState, useEffect } from "react";
 import Sidebar from "./Sidebar";
 import Header from "./Header";
@@ -25,6 +23,139 @@ const ProductsPage = () => {
     image: null,
     description: "",
   });
+
+
+
+  // БРЕНДЫ ИЗ БАЗЫ ДАННЫХ - ПРИМЕР ЗАПРОСОВ:
+
+/*
+// 1. Состояние для хранения брендов из БД
+const [brands, setBrands] = useState([]);
+
+// 2. Загрузка брендов при монтировании компонента
+useEffect(() => {
+  fetchBrands();
+}, []);
+
+// 3. Функция для загрузки брендов с бэкенда
+const fetchBrands = async () => {
+  try {
+    const response = await fetch('/api/brands/');
+    const data = await response.json();
+    setBrands(data);
+  } catch (error) {
+    console.error('Ошибка загрузки брендов:', error);
+  }
+};
+
+// 4. Пример структуры данных от бэкенда для брендов:
+// [
+//   {
+//     "id": 1,
+//     "name": "Nike",
+//     "description": "Спортивная одежда и обувь"
+//   },
+//   {
+//     "id": 2,
+//     "name": "Adidas",
+//     "description": "Спортивные товары"
+//   },
+//   {
+//     "id": 3,
+//     "name": "Apple",
+//     "description": "Электроника"
+//   },
+//   {
+//     "id": 4,
+//     "name": "Samsung",
+//     "description": "Электроника и бытовая техника"
+//   },
+//   {
+//     "id": 5, 
+//     "name": "Bosch",
+//     "description": "Сельхозтехника и инструменты"
+//   },
+//   {
+//     "id": 6,
+//     "name": "John Deere",
+//     "description": "Сельскохозяйственная техника"
+//   }
+// ]
+
+// 5. Django views пример для API брендов:
+/*
+from rest_framework import viewsets
+from .models import Brand
+from .serializers import BrandSerializer
+
+class BrandViewSet(viewsets.ModelViewSet):
+    queryset = Brand.objects.all()
+    serializer_class = BrandSerializer
+*/
+
+// 6. Django models пример для брендов:
+/*
+from django.db import models
+
+class Brand(models.Model):
+    name = models.CharField('Название бренда', max_length=100, unique=True)
+    description = models.TextField('Описание бренда', blank=True)
+    logo = models.ImageField('Логотип', upload_to='brands/logos/', blank=True, null=True)
+    
+    class Meta:
+        verbose_name = 'Бренд'
+        verbose_name_plural = 'Бренды'
+        ordering = ['name']
+    
+    def __str__(self):
+        return self.name
+*/
+
+// 7. Django serializers пример для брендов:
+/*
+from rest_framework import serializers
+from .models import Brand
+
+class BrandSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Brand
+        fields = ['id', 'name', 'description', 'logo']
+*/
+
+// 8. Использование в форме добавления товара:
+// Заменить статические option в select на:
+// {brands.map(brand => (
+//   <option key={brand.id} value={brand.name}>{brand.name}</option>
+// ))}
+
+// 9. Использование в форме поиска:
+// Заменить статические option в select на:
+// {brands.map(brand => (
+//   <option key={brand.id} value={brand.name}>{brand.name}</option>
+// ))}
+
+// 10. Пример обновленного select для бренда в форме добавления:
+/*
+<select
+  id="productBrand"
+  className="form-select"
+  name="brand"
+  value={formData.brand}
+  onChange={handleInputChange}
+  required
+>
+  <option value="" disabled>Выберите</option>
+  {brands.map(brand => (
+    <option key={brand.id} value={brand.name}>{brand.name}</option>
+  ))}
+</select>
+*/
+
+
+// ВАЖНО: Пока используем статические бренды
+// Когда бэкенд будет готов, раскомментируйте код выше
+
+
 
   // Состояния для поиска
   const [searchSelectedMainCategory, setSearchSelectedMainCategory] =
@@ -159,6 +290,106 @@ const ProductsPage = () => {
       "Эко-продукты и Органик",
     ],
   };
+
+
+// КАТЕГОРИИ ИЗ БАЗЫ ДАННЫХ - ПРИМЕР ЗАПРОСОВ:
+
+/*
+// 1. Состояние для хранения категорий из БД
+const [categories, setCategories] = useState({});
+
+// 2. Загрузка категорий при монтировании компонента
+useEffect(() => {
+  fetchCategories();
+}, []);
+
+// 3. Функция для загрузки категорий с бэкенда
+const fetchCategories = async () => {
+  try {
+    const response = await fetch('/api/categories/');
+    const data = await response.json();
+    
+    // Преобразуем данные из БД в нужный формат
+    const formattedCategories = {};
+    data.forEach(category => {
+      if (!formattedCategories[category.main_category]) {
+        formattedCategories[category.main_category] = [];
+      }
+      formattedCategories[category.main_category].push(category.subcategory);
+    });
+    
+    setCategories(formattedCategories);
+  } catch (error) {
+    console.error('Ошибка загрузки категорий:', error);
+  }
+};
+
+// 4. Пример структуры данных от бэкенда (Django + PostgreSQL):
+// [
+//   {
+//     "id": 1,
+//     "main_category": "Грунты и Субстраты",
+//     "subcategory": "Кокосовый субстрат и Перлит/Вермикулит"
+//   },
+//   {
+//     "id": 2,
+//     "main_category": "Грунты и Субстраты", 
+//     "subcategory": "Специализированные грунты - Для кактусов"
+//   },
+//   {
+//     "id": 3,
+//     "main_category": "Инвентарь и Аксессуары",
+//     "subcategory": "Ручной инструмент - Вилы"
+//   }
+// ]
+
+// 5. Django views пример для API:
+/*
+from rest_framework import viewsets
+from .models import Category
+from .serializers import CategorySerializer
+
+class CategoryViewSet(viewsets.ModelViewSet):
+    queryset = Category.objects.all()
+    serializer_class = CategorySerializer
+*/
+
+// 6. Django models пример:
+/*
+from django.db import models
+
+class Category(models.Model):
+    main_category = models.CharField('Основная категория', max_length=100)
+    subcategory = models.CharField('Подкатегория', max_length=200)
+    
+    class Meta:
+        verbose_name = 'Категория'
+        verbose_name_plural = 'Категории'
+    
+    def __str__(self):
+        return f"{self.main_category} - {self.subcategory}"
+*/
+
+// 7. Django serializers пример:
+/*
+from rest_framework import serializers
+from .models import Category
+
+class CategorySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Category
+        fields = ['id', 'main_category', 'subcategory']
+*/
+
+// 8. Замена статических категорий на динамические:
+// Вместо статического объекта categories используем состояние categories
+// Все остальное работает так же - структура данных идентична
+
+
+// ВАЖНО: Пока используем статические категории, закомментированные выше
+// Когда бэкенд будет готов, раскомментируйте код выше и удалите статический объект categories
+
+
 
   // Состояние для хранения списка товаров
   const [productsList, setProductsList] = useState([]);
@@ -301,8 +532,8 @@ const ProductsPage = () => {
                 className="brands-form"
                 style={{ backgroundColor: "#FFF4E5" }}
               >
-                <div className="row g-4 mb-4">
-                  <div className="col-md-4">
+                <div className="row g-4 mb-4 d-flex justify-content-between">
+                  <div className="col-md-3">
                     <label htmlFor="productName" className="form-label">
                       {editingProduct
                         ? "Изменить название товара:"
@@ -315,11 +546,11 @@ const ProductsPage = () => {
                       name="name"
                       value={formData.name}
                       onChange={handleInputChange}
-                      placeholder="Введите название..."
+                      placeholder="Введите..."
                       required
                     />
                   </div>
-                  <div className="col-md-4">
+                  <div className="col-md-3">
                     <label htmlFor="productBrand" className="form-label">
                       Бренд:
                     </label>
@@ -340,12 +571,8 @@ const ProductsPage = () => {
                       <option value="Samsung">Samsung</option>
                     </select>
                   </div>
-                </div>
-
-                {/* Двухуровневый выбор категории */}
-                <div className="row g-3 mb-4">
-                  <div className="col-md-6">
-                    <label className="form-label">Основная категория:</label>
+                  <div className="col-md-3">
+                    <label className="form-label">Категория:</label>
                     <select
                       className="form-select"
                       value={selectedMainCategory}
@@ -355,7 +582,7 @@ const ProductsPage = () => {
                       }}
                       required
                     >
-                      <option value="">Выберите основную категорию</option>
+                      <option value="">Выберите</option>
                       {Object.keys(categories).map((category) => (
                         <option key={category} value={category}>
                           {category}
@@ -363,30 +590,10 @@ const ProductsPage = () => {
                       ))}
                     </select>
                   </div>
-
-                  <div className="col-md-6">
-                    <label className="form-label">Подкатегория:</label>
-                    <select
-                      className="form-select"
-                      name="category"
-                      value={formData.category}
-                      onChange={handleInputChange}
-                      disabled={!selectedMainCategory}
-                      required
-                    >
-                      <option value="">Выберите подкатегорию</option>
-                      {selectedMainCategory &&
-                        categories[selectedMainCategory]?.map((subCategory) => (
-                          <option key={subCategory} value={subCategory}>
-                            {subCategory}
-                          </option>
-                        ))}
-                    </select>
-                  </div>
                 </div>
 
-                <div className="row g-4 mb-4">
-                  <div className="col-md-4">
+                <div className="row g-4 mb-4 d-flex justify-content-between">
+                  <div className="col-md-3">
                     <label htmlFor="productColor" className="form-label">
                       Цвет:
                     </label>
@@ -397,10 +604,10 @@ const ProductsPage = () => {
                       name="color"
                       value={formData.color}
                       onChange={handleInputChange}
-                      placeholder="Введите цвет..."
+                      placeholder="Введите..."
                     />
                   </div>
-                  <div className="col-md-4">
+                  <div className="col-md-3">
                     <label htmlFor="productPrice" className="form-label">
                       Цена, ₽:
                     </label>
@@ -411,29 +618,33 @@ const ProductsPage = () => {
                       name="price"
                       value={formData.price}
                       onChange={handleInputChange}
-                      placeholder="Введите цену..."
+                      placeholder="Введите..."
                       required
                     />
                   </div>
-                  <div className="col-md-4">
-                    <label htmlFor="productQuantity" className="form-label">
-                      Количество:
-                    </label>
-                    <input
-                      type="number"
-                      id="productQuantity"
-                      className="form-control"
-                      name="quantity"
-                      value={formData.quantity}
+                  <div className="col-md-3">
+                    <label className="form-label">Подкатегория:</label>
+                    <select
+                      className="form-select"
+                      name="category"
+                      value={formData.category}
                       onChange={handleInputChange}
-                      placeholder="Введите количество..."
-                      min="0"
-                    />
+                      disabled={!selectedMainCategory}
+                      required
+                    >
+                      <option value="">Выберите</option>
+                      {selectedMainCategory &&
+                        categories[selectedMainCategory]?.map((subCategory) => (
+                          <option key={subCategory} value={subCategory}>
+                            {subCategory}
+                          </option>
+                        ))}
+                    </select>
                   </div>
                 </div>
 
-                <div className="row g-4 mb-4">
-                  <div className="col-12">
+                <div className="row g-4 mb-4 d-flex justify-content-between">
+                  <div className="col-md-6">
                     <label htmlFor="productImage" className="form-label ">
                       {editingProduct
                         ? "Изменить изображение:"
@@ -474,6 +685,21 @@ const ProductsPage = () => {
                           : "Медиафайлы не выбраны"}
                       </span>
                     </div>
+                  </div>
+                  <div className="col-md-3">
+                    <label htmlFor="productQuantity" className="form-label">
+                      Количество:
+                    </label>
+                    <input
+                      type="number"
+                      id="productQuantity"
+                      className="form-control"
+                      name="quantity"
+                      value={formData.quantity}
+                      onChange={handleInputChange}
+                      placeholder="Введите..."
+                      min="0"
+                    />
                   </div>
                 </div>
 
@@ -596,7 +822,7 @@ const ProductsPage = () => {
               className="products-search-section mb-4 p-3 rounded"
               style={{ backgroundColor: "#FFF4E5" }}
             >
-              <div className="row g-3 d-flex justify-content-around">
+              <div className="row g-1 d-flex justify-content-around">
                 <div className="col-md-3">
                   <label className="form-label">Поиск товара:</label>
                   <input
@@ -616,7 +842,7 @@ const ProductsPage = () => {
                   </select>
                 </div>
                 <div className="col-md-3">
-                  <label className="form-label">Основная категория:</label>
+                  <label className="form-label">Категория:</label>
                   <select
                     className="form-select"
                     value={searchSelectedMainCategory}
@@ -625,7 +851,7 @@ const ProductsPage = () => {
                       setSearchCategory("");
                     }}
                   >
-                    <option value="">Выберите основную категорию</option>
+                    <option value="">Выберите</option>
                     {Object.keys(categories).map((category) => (
                       <option key={category} value={category}>
                         {category}
@@ -672,7 +898,7 @@ const ProductsPage = () => {
                     onChange={(e) => setSearchCategory(e.target.value)}
                     disabled={!searchSelectedMainCategory}
                   >
-                    <option value="">Выберите подкатегорию</option>
+                    <option value="">Выберите</option>
                     {searchSelectedMainCategory &&
                       categories[searchSelectedMainCategory]?.map(
                         (subCategory) => (
@@ -835,14 +1061,15 @@ const ProductsPage = () => {
                           onClick={() => setShowDetails(null)}
                         ></button>
                       </div>
-    <div 
-      style={{
-        height: "12px",
-        background: "linear-gradient(180deg, rgba(199, 158, 99, 0.2) 0%, rgba(199, 158, 99, 0.1) 50%, transparent 100%)",
-        margin: "10px 0 15px 0",
-        boxShadow: "inset 0 2px 4px rgba(136, 97, 40, 0.3)"
-      }}
-    ></div>
+                      <div
+                        style={{
+                          height: "12px",
+                          background:
+                            "linear-gradient(180deg, rgba(199, 158, 99, 0.2) 0%, rgba(199, 158, 99, 0.1) 50%, transparent 100%)",
+                          margin: "10px 0 15px 0",
+                          boxShadow: "inset 0 2px 4px rgba(136, 97, 40, 0.3)",
+                        }}
+                      ></div>
                       <div className="modal-body">
                         <p className="mb-2">
                           <strong>Бренд:</strong>{" "}
