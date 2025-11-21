@@ -5,6 +5,7 @@ import Login from './components/Login'
 import Register from './components/Register'
 import NewsPage from './components/NewsPage'
 import BrandsPage from './components/BrandsPage'
+import ProductsPage from './components/ProductsPage'
 
 function App() {
   return (
@@ -15,7 +16,7 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/news" element={<NewsPage />} />
         <Route path="/brands" element={<BrandsPage />} />
-        <Route path="/products" element={<NewsPage />} />
+        <Route path="/products" element={<ProductsPage />} />
         <Route path="/users" element={<NewsPage />} />
         <Route path="/catalog" element={<NewsPage />} />
       </Routes>
