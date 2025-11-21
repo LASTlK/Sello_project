@@ -75,7 +75,10 @@ const BrandsPage = () => {
     });
     setIsAddingBrand(true);
   };
-{/* Если в режиме добавления/редактирования — показываем форму */}
+
+  {
+    /* Если в режиме добавления/редактирования — показываем форму */
+  }
   if (isAddingBrand) {
     return (
       <div className="brands-page-container">
@@ -101,7 +104,11 @@ const BrandsPage = () => {
               <form onSubmit={handleSubmit} className="brands-form">
                 <div className="row align-items-start d-flex justify-content-between">
                   <div className="col-md-3">
-                    <label className="form-label">Название бренда:</label>
+                    <label className="form-label">
+                      {editingBrand
+                        ? "Изменить название бренда:"
+                        : "Название бренда:"}
+                    </label>
                     <input
                       type="text"
                       className="form-control"
@@ -145,7 +152,9 @@ const BrandsPage = () => {
                 </div>
 
                 <div className="mb-3 mt-4">
-                  <label className="form-label">Добавить логотип:</label>
+                  <label className="form-label">
+                    {editingBrand ? "Изменить логотип:" : "Добавить логотип:"}
+                  </label>
                   <div className="d-flex align-items-center">
                     <button
                       type="button"
@@ -177,7 +186,9 @@ const BrandsPage = () => {
                 </div>
 
                 <div className="mb-5 mt-5">
-                  <label className="form-label">Описание бренда:</label>
+                  <label className="form-label">
+                    {editingBrand ? "Изменить описание:" : "Описание бренда:"}
+                  </label>
                   <textarea
                     className="form-control"
                     name="description"
@@ -188,14 +199,28 @@ const BrandsPage = () => {
                   ></textarea>
                 </div>
 
-                <div className="d-flex justify-content-center">
-                  <button
-                    type="submit"
-                    className="btn btn-primary px-5 brands-submit-btn"
-                  >
-                    Готово
-                  </button>
-                </div>
+                {/* Кнопки в зависимости от режима */}
+                {editingBrand ? (
+                  // В режиме редактирования - кнопка "Сохранить" в правом углу
+                  <div className="d-flex justify-content-end">
+                    <button
+                      type="submit"
+                      className="btn btn-primary px-4 brands-submit-btn"
+                    >
+                      Сохранить
+                    </button>
+                  </div>
+                ) : (
+                  // В режиме добавления - кнопка "Готово" посередине
+                  <div className="d-flex justify-content-center">
+                    <button
+                      type="submit"
+                      className="btn btn-primary px-5 brands-submit-btn"
+                    >
+                      Готово
+                    </button>
+                  </div>
+                )}
               </form>
             </div>
           </main>
@@ -204,7 +229,9 @@ const BrandsPage = () => {
     );
   }
 
-  {/* Иначе — показываем список брендов */}
+  {
+    /* Иначе — показываем список брендов */
+  }
   return (
     <div className="brands-page-container">
       <Header />
@@ -277,7 +304,7 @@ const BrandsPage = () => {
                   onClick={() => setIsAddingBrand(true)}
                   style={{
                     borderRadius: "20px",
-                    marginLeft: "45px"
+                    marginLeft: "45px",
                   }}
                 >
                   <img
@@ -291,7 +318,10 @@ const BrandsPage = () => {
                   />
                   Добавить бренд
                 </button>
-                <button className="btn btn-primary brands-search-btn" style={{marginRight: "45px"}}>
+                <button
+                  className="btn btn-primary brands-search-btn"
+                  style={{ marginRight: "45px" }}
+                >
                   Поиск
                 </button>
               </div>
