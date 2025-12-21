@@ -7,7 +7,8 @@ import NewsPage from './components/NewsPage'
 import BrandsPage from './components/BrandsPage'
 import ProductsPage from './components/ProductsPage'
 import CatalogTree from './components/CatalogTree'
-import PageBuilder from "./components/PageBuilder/PageBuilder";
+import ConstructorPage from "./components/ConstructorPage";
+import PreviewPage from "./components/PreviewPage";
 
 function App() {
   return (
@@ -21,7 +22,8 @@ function App() {
         <Route path="/products" element={<ProductsPage />} />
         <Route path="/users" element={<NewsPage />} />
         <Route path="/catalog" element={<CatalogTree />} />
-        <Route path="/" element={<PageBuilder />} />
+        <Route path="/" element={<ConstructorPage />} />
+        <Route path="/preview" element={<PreviewPage />} />
       </Routes>
     </Router>
   )

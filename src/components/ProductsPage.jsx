@@ -565,9 +565,10 @@ class CategorySerializer(serializers.ModelSerializer):
                       <option value="" disabled>
                         Выберите
                       </option>
-                      <option value="Мираторг">Мираторг</option>
-                      <option value="Русагро">Русагро</option>
-                      <option value="Село зеленое">Село зеленое</option>
+                      <option value="Nike">Nike</option>
+                      <option value="Adidas">Adidas</option>
+                      <option value="Apple">Apple</option>
+                      <option value="Samsung">Samsung</option>
                     </select>
                   </div>
                   <div className="col-md-3">
@@ -834,9 +835,10 @@ class CategorySerializer(serializers.ModelSerializer):
                   <label className="form-label">Бренд:</label>
                   <select className="form-select">
                     <option>Выберите</option>
-                      <option value="Мираторг">Мираторг</option>
-                      <option value="Русагро">Русагро</option>
-                      <option value="Село зеленое">Село зеленое</option>
+                    <option>Nike</option>
+                    <option>Adidas</option>
+                    <option>Apple</option>
+                    <option>Samsung</option>
                   </select>
                 </div>
                 <div className="col-md-3">

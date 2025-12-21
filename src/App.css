@@ -1967,7 +1967,7 @@ body {
 /* Плавный скролл */
 .subcategories-list {
   scrollbar-width: thin;
-  scrollbar-color: #FFE082 #FFFAF4;
+  scrollbar-color: #FFE082 #FFE082;
 }
 
 .subcategories-list::-webkit-scrollbar {
@@ -2011,556 +2011,207 @@ body {
   margin-right: auto;
 }
 
+/* НОВЫЕ СТИЛИ */
 
-/* === новые стили === */
-
-.page-builder-container {
-  display: flex;
-  height: calc(100vh - 56px); /* минус высота header */
-  margin-top: 56px;
-  margin-left: 60px; /* ширина свернутого sidebar */
-  transition: margin-left 0.3s ease;
+.constructor-panel {
+  background-color: #fdf3e7;
 }
 
-.page-builder-container.sidebar-expanded {
-  margin-left: 250px; /* ширина expanded sidebar */
+.content-area {
+  background-color: white;
+  box-shadow: 0 0 10px rgba(0,0,0,0.05);
 }
 
-.editor-area {
-  flex: 1;
-  padding: 20px;
-  background-color: #f8f9fa;
+/* Центральная область — где рисуется макет */
+.constructor-content-area {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  width: 800px;
+  max-width: 100%;
   overflow-y: auto;
+  padding: 24px;
 }
 
-.blocks-panel {
+/* Панель конструктора (справа) */
+.constructor-panel {
+  background: #FFF4E5;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
   width: 350px;
-  background: white;
-  border-left: 1px solid #dee2e6;
+  flex-shrink: 0;
   padding: 20px;
   overflow-y: auto;
 }
 
-.editor-canvas {
-  background: white;
-  min-height: 100%;
-  padding: 30px;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-}
-
-.canvas-header {
+/* Стили для блоков-превью в панели */
+.block-preview-item {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 30px;
-  padding-bottom: 15px;
-  border-bottom: 2px solid #e9ecef;
-}
-
-.user-indicator {
-  background: #e9ecef;
-  padding: 5px 15px;
-  border-radius: 20px;
-  font-size: 14px;
-}
-
-.block-wrapper {
-  padding: 20px;
-  margin: 15px 0;
-  border: 2px dashed transparent;
+  flex-direction: column;
+  border: 1px solid #eee;
   border-radius: 8px;
+  cursor: grab;
   transition: all 0.2s ease;
-  cursor: pointer;
+  background: #fafafa;
 }
 
-.block-wrapper:hover {
-  background-color: #f8f9fa;
-}
-
-.block-wrapper.selected {
-  border-color: #0d6efd;
-  background-color: #f0f7ff;
-}
-
-.content-block {
-  background: #f8f9fa;
-  padding: 25px;
-}
-
-.image-placeholder {
-  height: 150px;
-  background: #e9ecef;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #6c757d;
-  border-radius: 4px;
-}
-
-.block-btn {
-  width: 100%;
-  padding: 12px 15px;
-  border: 1px solid #dee2e6;
-  background: white;
-  border-radius: 6px;
-  text-align: left;
-  transition: all 0.2s;
-}
-
-.block-btn:hover {
-  background: #f8f9fa;
-  border-color: #0d6efd;
-}
-
-.block-icon {
-  width: 30px;
-  height: 30px;
-  background: #0d6efd;
-  color: white;
-  border-radius: 4px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-right: 10px;
-}
-
-.content-block-item {
-  border: 1px solid #dee2e6;
-  cursor: pointer;
-  transition: all 0.2s;
-}
-
-.content-block-item:hover {
-  border-color: #0d6efd;
-  background: #f8f9fa;
-}
-
-.preview-placeholder {
-  height: 60px;
-  background: #e9ecef;
-  border-radius: 4px;
-}
-
-.editor-panel {
-  position: fixed;
-  right: 370px;
-  top: 100px;
-  width: 300px;
-  background: white;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-  border: 1px solid #dee2e6;
-}
-
-.empty-canvas {
-  height: 400px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #6c757d;
-  border: 2px dashed #dee2e6;
-  border-radius: 8px;
-}
-
-/* Основные стили конструктора */
-.page-builder-container {
-  display: flex;
-  height: calc(100vh - 56px);
-  margin-top: 56px;
-  margin-left: 60px;
-  transition: margin-left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  background: #f5f7fa;
-  overflow: hidden;
-}
-
-.page-builder-container.sidebar-expanded {
-  margin-left: 250px;
-}
-
-/* Область редактора */
-.editor-area {
-  flex: 1;
-  padding: 25px;
-  overflow-y: auto;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  background-size: 400% 400%;
-  animation: gradientBG 15s ease infinite;
-}
-
-@keyframes gradientBG {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
-/* Холст редактора */
-.editor-canvas {
-  background: white;
-  min-height: 600px;
-  padding: 40px;
-  border-radius: 12px;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  backdrop-filter: blur(10px);
-}
-
-.canvas-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 40px;
-  padding-bottom: 20px;
-  border-bottom: 3px solid #f0f2f5;
-  position: relative;
-}
-
-.canvas-header h2 {
-  font-size: 28px;
-  font-weight: 700;
-  color: #2d3436;
-  margin: 0;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.user-indicator {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: white;
-  padding: 10px 20px;
-  border-radius: 25px;
-  font-size: 14px;
-  font-weight: 600;
-  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.user-indicator::before {
-  content: "👤";
-  font-size: 16px;
-}
-
-/* Блоки на холсте */
-.block-wrapper {
-  padding: 25px;
-  margin: 20px 0;
-  border: 2px dashed transparent;
-  border-radius: 12px;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  cursor: move;
-  position: relative;
-  background: white;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-}
-
-.block-wrapper:hover {
+.block-preview-item:hover {
+  background: #FFE082;
   transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-  border-color: #e0e0e0;
+  border-color: #FFE082;
 }
 
-.block-wrapper.selected {
-  border: 2px solid #667eea;
-  box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.1), 0 8px 25px rgba(0, 0, 0, 0.1);
-  animation: pulse 2s infinite;
+/* === Сетка блоков — 2 в ряд, только изображения === */
+.block-preview-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
 }
 
-@keyframes pulse {
-  0% { box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.1), 0 8px 25px rgba(0, 0, 0, 0.1); }
-  50% { box-shadow: 0 0 0 8px rgba(102, 126, 234, 0.2), 0 8px 25px rgba(0, 0, 0, 0.1); }
-  100% { box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.1), 0 8px 25px rgba(0, 0, 0, 0.1); }
-}
-
-/* Индикатор выбранного блока */
-.block-wrapper.selected::before {
-  content: "✓ Выбран";
-  position: absolute;
-  top: -12px;
-  left: 20px;
-  background: #667eea;
-  color: white;
-  padding: 4px 12px;
-  border-radius: 12px;
-  font-size: 12px;
-  font-weight: 600;
-  z-index: 10;
-}
-
-/* Контент-блоки */
-.content-block {
-  background: #f8fafc;
-  padding: 30px;
-  border-radius: 12px;
-  border: 1px solid #e2e8f0;
-}
-
-/* Плейсхолдеры для изображений */
-.image-placeholder {
-  height: 200px;
-  background: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
+.block-preview-item {
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #94a3b8;
+  background: #FFF4E5;
+  border: 1px solid #eee;
   border-radius: 8px;
-  overflow: hidden;
-  position: relative;
-  transition: all 0.3s ease;
+  cursor: grab;
+  transition: all 0.2s ease;
+
 }
 
-.image-placeholder:hover {
-  transform: scale(1.02);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+.block-preview-item:hover {
+  background: #f5f5f5;
+  transform: translateY(-2px);
+  border-color: #ddd;
 }
 
-.image-placeholder::before {
-  content: "🖼️ Изображение";
-  font-size: 14px;
-  font-weight: 500;
-}
-
-/* Панель блоков справа */
-.blocks-panel {
-  width: 380px;
-  background: white;
-  border-left: 1px solid #e2e8f0;
-  padding: 25px;
-  overflow-y: auto;
-  box-shadow: -5px 0 20px rgba(0, 0, 0, 0.05);
-}
-
-/* Кнопки блоков */
-.block-btn {
+.block-preview-image {
   width: 100%;
-  padding: 15px;
-  border: none;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: white;
-  border-radius: 10px;
-  text-align: left;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  margin-bottom: 12px;
+  height: 100%;
+  object-fit: contain;
+}
+
+.sidebar-custom.expanded ~ .constructor-layout {
+  padding-left: 280px;
+}
+
+/* Основной контейнер конструктора */
+.constructor-layout {
   display: flex;
-  align-items: center;
-  font-weight: 500;
-  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+  gap: 20px;
+  height: calc(100vh - 76px);
+  padding: 20px 20px 20px 120px;
+  transition: padding-left 0.3s ease;
 }
 
-.block-btn:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+/* Сдвиг при раскрытом сайдбаре */
+.sidebar-custom.expanded ~ .constructor-layout {
+  padding-left: 300px;
 }
 
-.block-btn:active {
-  transform: translateY(0);
-}
-
-.block-icon {
-  width: 36px;
-  height: 36px;
-  background: rgba(255, 255, 255, 0.2);
-  color: white;
-  border-radius: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-right: 15px;
-  font-weight: bold;
-  font-size: 16px;
-}
-
-/* Элементы контент-блоков */
-.content-block-item {
-  border: 1px solid #e2e8f0;
-  cursor: pointer;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  background: white;
-  border-radius: 10px;
-  overflow: hidden;
-  margin-bottom: 20px;
-  position: relative;
-}
-
-.content-block-item:hover {
-  transform: translateY(-5px);
-  border-color: #667eea;
-  box-shadow: 0 10px 30px rgba(102, 126, 234, 0.15);
-}
-
-.content-block-item::before {
-  content: "✨";
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  font-size: 20px;
-  opacity: 0;
-  transition: opacity 0.3s;
-}
-
-.content-block-item:hover::before {
-  opacity: 1;
-}
-
-/* Превью блоков */
-.preview-placeholder {
-  height: 80px;
-  background: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
-  border-radius: 6px;
-  margin-top: 15px;
-  position: relative;
-  overflow: hidden;
-}
-
-.preview-placeholder::after {
-  content: "";
-  position: absolute;
+/* Модальное окно */
+/* Модальное окно выбора цвета */
+.modal-overlay {
+  position: fixed;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
-  animation: shimmer 2s infinite;
-}
-
-@keyframes shimmer {
-  0% { transform: translateX(-100%); }
-  100% { transform: translateX(100%); }
-}
-
-/* Панель редактирования */
-.editor-panel {
-  position: fixed;
-  right: 400px;
-  top: 100px;
-  width: 320px;
-  background: white;
-  padding: 25px;
-  border-radius: 15px;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
-  border: 1px solid #e2e8f0;
-  z-index: 1000;
-  animation: slideIn 0.3s ease;
-}
-
-@keyframes slideIn {
-  from {
-    opacity: 0;
-    transform: translateX(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-/* Заголовок панели редактирования */
-.panel-header {
-  padding-bottom: 15px;
-  border-bottom: 2px solid #f0f2f5;
-  margin-bottom: 20px;
-}
-
-.panel-header h6 {
-  font-size: 16px;
-  font-weight: 700;
-  color: #2d3436;
-  margin: 0;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.panel-header h6::before {
-  content: "⚙️";
-  font-size: 18px;
-}
-
-/* Пустой холст */
-.empty-canvas {
-  height: 500px;
+  background: rgba(0,0,0,0.5);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #94a3b8;
-  border: 3px dashed #cbd5e1;
-  border-radius: 15px;
-  flex-direction: column;
-  gap: 20px;
-  background: rgba(255, 255, 255, 0.8);
-  backdrop-filter: blur(10px);
+  z-index: 2000;
 }
 
-.empty-canvas p {
-  font-size: 18px;
-  font-weight: 500;
-  margin: 0;
-}
-
-.empty-canvas::before {
-  content: "✨";
-  font-size: 48px;
-}
-
-/* Действия с холстом */
-.canvas-actions {
-  display: flex;
-  gap: 15px;
+.modal-content {
+  background: #FFF4E5 !important;
   padding: 20px;
-  background: white;
   border-radius: 12px;
-  margin-top: 20px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  width: 90%;
+  max-width: 500px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
 }
 
-.canvas-actions .btn {
-  padding: 12px 24px;
-  border-radius: 10px;
-  font-weight: 600;
-  transition: all 0.3s ease;
+.clickable-item {
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.clickable-item:hover {
+  background: #FFF4E4;
+}
+
+.main-page {
+  padding-top: 100px !important;
+}
+
+/* Кнопки "Добавить заголовок" и т.д. */
+.constructor-panel .btn-outline-secondary {
+  color: #886128 !important;
+  border-color: #886128 !important;
+}
+
+.constructor-panel .btn-outline-secondary:hover {
+  background-color: #886128 !important;
+  color: white !important;
+  border-color: #886128 !important;
+}
+
+/* Контролы выравнивания */
+.text-alignment-controls {
   display: flex;
-  align-items: center;
-  gap: 8px;
+  gap: 6px;
+  justify-content: center;
 }
 
-.canvas-actions .btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+.text-alignment-controls .btn {
+  padding: 4px 10px;
+  font-size: 14px;
+  border: 1px solid #886128;
+  color: #886128;
 }
 
-/* Адаптивность */
-@media (max-width: 1200px) {
-  .blocks-panel {
-    width: 320px;
-  }
-  
-  .editor-panel {
-    right: 340px;
-    width: 280px;
-  }
+.text-alignment-controls .btn.active,
+.text-alignment-controls .btn:hover {
+  background-color: #886128;
+  color: white;
 }
 
-@media (max-width: 992px) {
-  .page-builder-container {
-    flex-direction: column;
-  }
-  
-  .blocks-panel {
-    width: 100%;
-    height: 300px;
-    border-left: none;
-    border-top: 1px solid #e2e8f0;
-  }
-  
-  .editor-panel {
-    position: relative;
-    right: auto;
-    top: auto;
-    width: 100%;
-    margin-top: 20px;
-  }
+/* Кнопки "Товар" / "Новость" */
+.modal-content .btn-outline-primary,
+.modal-content .btn-outline-success {
+  color: #886128 !important;
+  border-color: #886128 !important;
+}
+
+.modal-content .btn-outline-primary:hover,
+.modal-content .btn-outline-success:hover {
+  background-color: #886128 !important;
+  color: white !important;
+}
+
+/* Стили для кнопок управления текстом */
+.text-alignment-controls,
+.text-format-controls {
+  display: flex;
+  gap: 4px;
+  flex-wrap: wrap;
+}
+
+.text-format-controls .btn,
+.text-alignment-controls .btn {
+  padding: 2px 6px;
+  font-size: 12px;
+  border: 1px solid #886128;
+  color: #886128;
+}
+
+.text-format-controls .btn.active,
+.text-alignment-controls .btn.active,
+.text-format-controls .btn:hover,
+.text-alignment-controls .btn:hover {
+  background-color: #886128;
+  color: white;
 }
