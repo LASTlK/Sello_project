@@ -9,6 +9,7 @@ import ProductsPage from './components/ProductsPage'
 import CatalogTree from './components/CatalogTree'
 import ConstructorPage from "./components/ConstructorPage";
 import PreviewPage from "./components/PreviewPage";
+import CreatorDashboard from './components/CreatorDashboard';
 
 function App() {
   return (
@@ -24,9 +25,10 @@ function App() {
         <Route path="/catalog" element={<CatalogTree />} />
         <Route path="/" element={<ConstructorPage />} />
         <Route path="/preview" element={<PreviewPage />} />
+        <Route path="/creator" element={<CreatorDashboard />} />
       </Routes>
     </Router>
   )
 }
 
-export default App
+export default App;

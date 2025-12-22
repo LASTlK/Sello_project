@@ -2215,3 +2215,51 @@ body {
   background-color: #886128;
   color: white;
 }
+
+/* src/components/CreatorDashboard.module.css */
+
+.tableHeader {
+  background-color: #F9E5C8 !important;
+  color: #886128 !important;
+  text-align: center !important;
+  vertical-align: middle !important;
+  border-right: 1px solid #EED1A6 !important;
+}
+
+.tableCell {
+  color: #886128 !important;
+  text-align: center !important;
+  vertical-align: middle !important;
+  border-right: 1px solid #EED1A6 !important;
+}
+
+.tableCellLast {
+  color: #886128 !important;
+  text-align: center !important;
+  vertical-align: middle !important;
+}
+
+/* Стили для блоков статистики — одинаковая высота */
+.statsBlock {
+  height: 150px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 15px;
+}
+
+.statsBlock h5 {
+  color: #886128;
+  margin-bottom: 10px;
+}
+
+.statsBlock .statRow {
+  display: flex;
+  justify-content: space-between;
+  margin: 5px 0;
+}
+
+.statsBlock .statValue {
+  font-weight: bold;
+  color: #886128;
+}
