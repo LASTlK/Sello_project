@@ -10,6 +10,8 @@ import CatalogTree from './components/CatalogTree'
 import ConstructorPage from "./components/ConstructorPage";
 import PreviewPage from "./components/PreviewPage";
 import CreatorDashboard from './components/CreatorDashboard';
+import UserDashboard from './components/UserDashboard';
+import CartPage from './components/CartPage';
 
 function App() {
   return (
@@ -26,6 +28,8 @@ function App() {
         <Route path="/" element={<ConstructorPage />} />
         <Route path="/preview" element={<PreviewPage />} />
         <Route path="/creator" element={<CreatorDashboard />} />
+        <Route path="/user" element={<UserDashboard />} /> 
+        <Route path="/cart" element={<CartPage />} />
       </Routes>
     </Router>
   )

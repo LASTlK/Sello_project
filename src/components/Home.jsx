@@ -43,7 +43,7 @@ const Home = () => {
                   Создатель
                 </a>
                 <a
-                  href="/customer"
+                  href="/user"
                   className="btn"
                   style={{
                     backgroundColor: "#FFCA28",
